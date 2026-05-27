@@ -69,39 +69,22 @@
         const { filename } = event.data;
         const containerEl = document.getElementById('resume-container');
         if (!containerEl) { window.parent.postMessage({ type: 'DOWNLOAD_ERROR' }, '*'); return; }
-        const snap = {
-          htmlW: document.documentElement.style.width,
-          bodyW: document.body.style.width, bodyM: document.body.style.margin,
-          bodyP: document.body.style.padding, bodyOvf: document.body.style.overflow,
-          cW: containerEl.style.width, cM: containerEl.style.margin,
-          cShadow: containerEl.style.boxShadow, cMinH: containerEl.style.minHeight,
-        };
-        document.documentElement.style.width = '794px';
-        document.body.style.width = '794px'; document.body.style.margin = '0';
-        document.body.style.padding = '0'; document.body.style.overflow = 'visible';
-        containerEl.style.width = '794px'; containerEl.style.margin = '0';
-        containerEl.style.boxShadow = 'none'; containerEl.style.minHeight = 'auto';
-        const restore = () => {
-          document.documentElement.style.width = snap.htmlW;
-          document.body.style.width = snap.bodyW; document.body.style.margin = snap.bodyM;
-          document.body.style.padding = snap.bodyP; document.body.style.overflow = snap.bodyOvf;
-          containerEl.style.width = snap.cW; containerEl.style.margin = snap.cM;
-          containerEl.style.boxShadow = snap.cShadow; containerEl.style.minHeight = snap.cMinH;
-        };
+        const prevShadow = containerEl.style.boxShadow;
+        containerEl.style.boxShadow = 'none';
         setTimeout(() => {
           const opt = {
-            margin: 0, filename: filename || 'resume.pdf',
+            margin: [10, 10, 10, 10], filename: filename || 'resume.pdf',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, windowWidth: 794, scrollX: 0, scrollY: 0, logging: false },
+            html2canvas: { scale: 2, useCORS: true, allowTaint: true, scrollX: 0, scrollY: 0, logging: false },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['css', 'legacy'] }
+            pagebreak: { mode: 'avoid-all' }
           };
           html2pdf().set(opt).from(containerEl).save().then(() => {
-            restore();
+            containerEl.style.boxShadow = prevShadow;
             window.parent.postMessage({ type: 'DOWNLOAD_COMPLETE' }, '*');
           }).catch(err => {
             console.error('PDF Generation failed:', err);
-            restore();
+            containerEl.style.boxShadow = prevShadow;
             window.parent.postMessage({ type: 'DOWNLOAD_ERROR' }, '*');
           });
         }, 300);
