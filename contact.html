@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact ResumeForge</title>
+  <meta name="description" content="Contact ResumeForge for feedback, support, and template suggestions." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" aria-label="ResumeForge Home">
+        <div class="logo-icon"><i class="fa-solid fa-file-lines"></i></div>
+        <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+        <li><a href="templates.html" class="nav-link" data-i18n="nav_templates">Templates</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+        <li><a href="analyzer.html" class="nav-link" data-i18n="nav_analyzer">AI Analyzer</a></li>
+        <li><a href="contact.html" class="nav-link active" aria-current="page" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" id="langToggle">
+          <i class="fa-solid fa-language" aria-hidden="true"></i> <span class="lang-toggle-text">عربي</span>
+        </button>
+        <button class="btn-icon" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html" class="mobile-link" data-i18n="nav_home">Home</a>
+      <a href="templates.html" class="mobile-link" data-i18n="nav_templates">Templates</a>
+      <a href="about.html" class="mobile-link" data-i18n="nav_about">About</a>
+      <a href="analyzer.html" class="mobile-link" data-i18n="nav_analyzer">AI Analyzer</a>
+      <a href="contact.html" class="mobile-link active" data-i18n="nav_contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main-content" style="padding-top: var(--navbar-height);">
+    <section class="section-padding">
+      <div class="container" style="max-width: 840px;">
+        <div class="section-header" style="text-align: left;">
+          <span class="section-badge">Contact</span>
+          <h1 class="section-title">Get in Touch</h1>
+          <p class="section-subtitle" style="margin: 0;">
+            Share feedback, bug reports, or template ideas. We use your input to improve ResumeForge.
+          </p>
+        </div>
+
+        <div style="display: grid; gap: 1rem;">
+          <article style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.25rem;">
+            <h2 style="font-size: var(--text-xl); margin-bottom: 0.5rem;">Support</h2>
+            <p>
+              For help with editor issues or PDF export, send details and steps to reproduce the problem.
+            </p>
+            <p><strong>Email:</strong> <a href="mailto:support@resumeforge.app">support@resumeforge.app</a></p>
+          </article>
+
+          <article style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 1.25rem;">
+            <h2 style="font-size: var(--text-xl); margin-bottom: 0.5rem;">Partnerships</h2>
+            <p>
+              Interested in collaborating, adding industry templates, or integrating ResumeForge in your workflow?
+            </p>
+            <p><strong>Email:</strong> <a href="mailto:hello@resumeforge.app">hello@resumeforge.app</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+          </a>
+          <p data-i18n="footer_desc">Build professional resumes for free. No signup. No limits.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_2">Pages</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="templates.html" data-i18n="nav_templates">Templates</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="analyzer.html" data-i18n="nav_analyzer">AI Analyzer</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><span data-i18n="footer_rights">&copy; 2025 ResumeForge. All rights reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+</html>

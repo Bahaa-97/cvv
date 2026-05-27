@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Resume — ResumeForge</title>
+  <meta name="description" content="Edit your resume online with a live preview. Customize colors, fonts, and content. Download as high-quality PDF." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/editor.css" />
+</head>
+<body class="editor-body">
+  <!-- Editor Navbar -->
+  <nav class="editor-navbar" id="navbar">
+    <div class="editor-nav-left">
+      <a href="templates.html" class="btn-icon editor-back" aria-label="Back to templates" title="Back to templates">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <div class="editor-template-info">
+        <span class="editor-template-name" id="editorTemplateName">Template Name</span>
+        <span class="editor-save-status" id="saveStatus">
+          <i class="fa-solid fa-circle-check"></i> Auto-saved
+        </span>
+      </div>
+    </div>
+    <div class="editor-nav-center">
+      <!-- Preview Breakpoint switcher -->
+      <div class="preview-breakpoints" role="group" aria-label="Preview size">
+        <button class="bp-btn active" data-bp="desktop" title="Desktop preview">
+          <i class="fa-solid fa-desktop"></i>
+        </button>
+        <button class="bp-btn" data-bp="mobile" title="Mobile preview">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </button>
+      </div>
+    </div>
+    <div class="editor-nav-right">
+      <button class="btn btn-ghost btn-sm" id="langToggle" style="padding: 0 8px;">
+        <i class="fa-solid fa-language" aria-hidden="true"></i> <span class="lang-toggle-text" style="display:none;">عربي</span>
+      </button>
+      <button class="btn-icon" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="btn btn-outline btn-sm" id="resetBtn" title="Reset to sample data">
+        <i class="fa-solid fa-rotate-left"></i> <span data-i18n="ed_reset">Reset</span>
+      </button>
+      <button class="btn btn-primary btn-sm" id="downloadPdfBtn">
+        <i class="fa-solid fa-download"></i> <span data-i18n="ed_download">Download PDF</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="editor-layout">
+    <!-- LEFT PANEL: Form Editor -->
+    <aside class="editor-panel" id="editorPanel" role="form" aria-label="Resume editor form">
+      <!-- Panel Tabs -->
+      <div class="panel-tabs" role="tablist">
+        <button class="panel-tab active" role="tab" aria-selected="true" data-tab="content" id="tab-content">
+          <i class="fa-solid fa-pen-to-square"></i> <span data-i18n="ed_tab_content">Content</span>
+        </button>
+        <button class="panel-tab" role="tab" aria-selected="false" data-tab="design" id="tab-design">
+          <i class="fa-solid fa-palette"></i> <span data-i18n="ed_tab_design">Design</span>
+        </button>
+      </div>
+
+      <!-- CONTENT TAB -->
+      <div class="panel-content active" id="tabContentPanel" role="tabpanel" aria-labelledby="tab-content">
+        <!-- Personal Info -->
+        <div class="form-section" id="section-personal">
+          <div class="form-section-header" data-collapse="personal">
+            <span><i class="fa-solid fa-user"></i> <span data-i18n="ed_personal">Personal Information</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-personal">
+            <div class="form-group">
+              <label class="form-label" for="inputPhoto" data-i18n="ed_photo">Profile Photo</label>
+              <div style="display:flex; gap:10px; align-items:center;">
+                <input type="file" id="inputPhoto" class="form-control" accept="image/*" />
+                <button type="button" id="removePhotoBtn" class="btn btn-outline btn-sm" style="display:none;" title="Remove Photo"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputFullName"><span data-i18n="ed_fname">Full Name</span> <span class="required">*</span></label>
+              <input type="text" id="inputFullName" class="form-control" placeholder="e.g. John Smith" maxlength="80" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputJobTitle" data-i18n="ed_job">Job Title / Profession</label>
+              <input type="text" id="inputJobTitle" class="form-control" placeholder="e.g. Senior Software Engineer" maxlength="100" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputEmail" data-i18n="ed_email">Email</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="john@example.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputPhone" data-i18n="ed_phone">Phone</label>
+              <input type="tel" id="inputPhone" class="form-control" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="inputCity" data-i18n="ed_city">City</label>
+                <input type="text" id="inputCity" class="form-control" placeholder="New York" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="inputCountry" data-i18n="ed_country">Country</label>
+                <input type="text" id="inputCountry" class="form-control" placeholder="USA" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputWebsite" data-i18n="ed_website">Website / Portfolio</label>
+              <input type="url" id="inputWebsite" class="form-control" placeholder="https://yoursite.com" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="form-section" id="section-social">
+          <div class="form-section-header" data-collapse="social">
+            <span><i class="fa-solid fa-share-nodes"></i> <span data-i18n="ed_social">Social Links</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-social">
+            <div class="form-group">
+              <label class="form-label" for="inputLinkedin">LinkedIn</label>
+              <div class="input-with-icon">
+                <i class="fa-brands fa-linkedin input-icon"></i>
+                <input type="url" id="inputLinkedin" class="form-control" placeholder="linkedin.com/in/username" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputGithub">GitHub</label>
+              <div class="input-with-icon">
+                <i class="fa-brands fa-github input-icon"></i>
+                <input type="url" id="inputGithub" class="form-control" placeholder="github.com/username" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="form-section" id="section-summary">
+          <div class="form-section-header" data-collapse="summary">
+            <span><i class="fa-solid fa-align-left"></i> <span data-i18n="ed_summary_title">Professional Summary</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-summary">
+            <div class="form-group">
+              <label class="form-label" for="inputSummary" data-i18n="ed_summary_label">Summary</label>
+              <textarea id="inputSummary" class="form-control" rows="4" placeholder="A brief, powerful summary of your professional background and goals..."></textarea>
+              <span class="char-count" id="summaryCount">0 / 500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="form-section" id="section-experience">
+          <div class="form-section-header" data-collapse="experience">
+            <span><i class="fa-solid fa-briefcase"></i> <span data-i18n="ed_exp_title">Work Experience</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-experience">
+            <div id="experienceList" class="dynamic-list"></div>
+            <button class="btn-add" id="addExperience" type="button">
+              <i class="fa-solid fa-plus"></i> <span data-i18n="ed_add_exp">Add Experience</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="form-section" id="section-education">
+          <div class="form-section-header" data-collapse="education">
+            <span><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="ed_edu_title">Education</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-education">
+            <div id="educationList" class="dynamic-list"></div>
+            <button class="btn-add" id="addEducation" type="button">
+              <i class="fa-solid fa-plus"></i> <span data-i18n="ed_add_edu">Add Education</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="form-section" id="section-skills">
+          <div class="form-section-header" data-collapse="skills">
+            <span><i class="fa-solid fa-star"></i> <span data-i18n="ed_skills_title">Skills</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-skills">
+            <div class="form-group">
+              <label class="form-label" data-i18n="ed_skills_label">Skills (press Enter or comma to add)</label>
+              <div class="skills-input-area" id="skillsInputArea">
+                <div class="skills-tags" id="skillsTags"></div>
+                <input
+                  type="text"
+                  id="skillInput"
+                  class="skills-input"
+                  placeholder="Type a skill..."
+                  maxlength="40"
+                  aria-label="Add skill"
+                />
+              </div>
+              <p class="form-hint" data-i18n="ed_skills_hint">e.g. JavaScript, Python, Project Management</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="form-section" id="section-languages">
+          <div class="form-section-header" data-collapse="languages">
+            <span><i class="fa-solid fa-language"></i> <span data-i18n="ed_lang_title">Languages</span></span>
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+          </div>
+          <div class="form-section-body" id="collapse-languages">
+            <div id="languagesList" class="dynamic-list"></div>
+            <button class="btn-add" id="addLanguage" type="button">
+              <i class="fa-solid fa-plus"></i> <span data-i18n="ed_add_lang">Add Language</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN TAB -->
+      <div class="panel-content" id="tabDesignPanel" role="tabpanel" aria-labelledby="tab-design">
+        <div class="design-section">
+          <h3 class="design-section-title" data-i18n="ed_theme">Color Theme</h3>
+          <div class="color-swatches" id="colorSwatches" role="radiogroup" aria-label="Primary color">
+            <button class="color-swatch active" data-color="#6366f1" style="background:#6366f1;" title="Indigo" aria-label="Indigo color"></button>
+            <button class="color-swatch" data-color="#0ea5e9" style="background:#0ea5e9;" title="Sky Blue" aria-label="Sky blue color"></button>
+            <button class="color-swatch" data-color="#10b981" style="background:#10b981;" title="Emerald" aria-label="Emerald color"></button>
+            <button class="color-swatch" data-color="#f43f5e" style="background:#f43f5e;" title="Rose" aria-label="Rose color"></button>
+            <button class="color-swatch" data-color="#f59e0b" style="background:#f59e0b;" title="Amber" aria-label="Amber color"></button>
+            <button class="color-swatch" data-color="#8b5cf6" style="background:#8b5cf6;" title="Violet" aria-label="Violet color"></button>
+            <button class="color-swatch" data-color="#1e293b" style="background:#1e293b;" title="Slate Dark" aria-label="Dark slate color"></button>
+            <div class="color-swatch-custom">
+              <input type="color" id="customColor" aria-label="Custom color" title="Custom color" />
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-section">
+          <h3 class="design-section-title" data-i18n="ed_font">Font Family</h3>
+          <div class="font-options" role="radiogroup" aria-label="Font family">
+            <button class="font-option active" data-font="Inter" style="font-family:'Inter';">Inter</button>
+            <button class="font-option" data-font="Georgia" style="font-family:Georgia;">Georgia</button>
+            <button class="font-option" data-font="'Courier New'" style="font-family:'Courier New';">Courier</button>
+            <button class="font-option" data-font="'Times New Roman'" style="font-family:'Times New Roman';">Times</button>
+            <button class="font-option" data-font="Amiri" style="font-family:'Amiri';">أميري</button>
+          </div>
+        </div>
+
+        <div class="design-section">
+          <h3 class="design-section-title" data-i18n="ed_font_size">Font Size</h3>
+          <div class="slider-group">
+            <label for="fontSizeSlider" class="sr-only">Font size</label>
+            <input type="range" id="fontSizeSlider" min="10" max="16" value="12" class="range-slider" />
+            <div class="slider-labels">
+              <span data-i18n="ed_size_sm">Small</span>
+              <span id="fontSizeValue">12px</span>
+              <span data-i18n="ed_size_lg">Large</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-section">
+          <h3 class="design-section-title" data-i18n="ed_spacing">Spacing</h3>
+          <div class="slider-group">
+            <label for="spacingSlider" class="sr-only">Content spacing</label>
+            <input type="range" id="spacingSlider" min="1" max="3" step="0.5" value="1.5" class="range-slider" />
+            <div class="slider-labels">
+              <span data-i18n="ed_space_compact">Compact</span>
+              <span id="spacingValue">Normal</span>
+              <span data-i18n="ed_space_spacious">Spacious</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL: Live Preview -->
+    <div class="editor-preview-area" id="previewArea">
+      <div class="preview-wrapper" id="previewWrapper">
+        <iframe
+          id="resumePreview"
+          class="resume-preview-frame"
+          title="Resume live preview"
+          aria-label="Resume preview"
+          sandbox="allow-same-origin allow-scripts allow-downloads allow-downloads-without-user-activation allow-popups"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PDF Generating Overlay -->
+  <div class="pdf-overlay" id="pdfOverlay" hidden role="status" aria-live="polite">
+    <div class="pdf-overlay-content">
+      <div class="pdf-spinner" aria-hidden="true"></div>
+      <p data-i18n="ed_pdf_gen">Generating your PDF...</p>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/templates-registry.js"></script>
+  <script src="js/editor.js"></script>
+</body>
+</html>

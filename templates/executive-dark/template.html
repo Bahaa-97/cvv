@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Executive Dark Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="resume-container" id="resume-container">
+    <header class="header">
+      <div class="header-photo-container" id="cv-photo-container" style="display:none; margin-right: 20px;">
+        <img id="cv-photo" src="" alt="Profile Photo" class="profile-photo" />
+      </div>
+      <div class="header-content">
+        <h1 class="name" id="cv-fullName">Name Here</h1>
+        <h2 class="job-title" id="cv-jobTitle">Job Title</h2>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item" id="cv-email-container"><i class="fa-solid fa-envelope"></i> <span id="cv-email"></span></div>
+        <div class="contact-item" id="cv-phone-container"><i class="fa-solid fa-phone"></i> <span id="cv-phone"></span></div>
+        <div class="contact-item" id="cv-location-container"><i class="fa-solid fa-location-dot"></i> <span id="cv-location"></span></div>
+        <div class="contact-item" id="cv-linkedin-container"><i class="fa-brands fa-linkedin"></i> <span id="cv-linkedin"></span></div>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <section class="section" id="section-summary">
+        <h3 class="section-title">Executive Summary</h3>
+        <p class="summary-text" id="cv-summary"></p>
+      </section>
+
+      <div class="grid-2-col">
+        <div class="col-main">
+          <section class="section" id="section-experience">
+            <h3 class="section-title">Career History</h3>
+            <div class="list-container" id="cv-experience"></div>
+          </section>
+
+          <section class="section" id="section-education">
+            <h3 class="section-title">Education</h3>
+            <div class="list-container" id="cv-education"></div>
+          </section>
+        </div>
+
+        <div class="col-side">
+          <section class="section" id="section-skills">
+            <h3 class="section-title">Core Competencies</h3>
+            <div class="skills-container" id="cv-skills"></div>
+          </section>
+
+          <section class="section" id="section-languages">
+            <h3 class="section-title">Languages</h3>
+            <div class="languages-container" id="cv-languages"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      const { type, data, design } = event.data;
+      if (type === 'UPDATE_DATA') renderData(data);
+      else if (type === 'UPDATE_DESIGN') renderDesign(design);
+      else if (type === 'PREPARE_PRINT') document.body.classList.add('print-mode');
+      else if (type === 'END_PRINT') document.body.classList.remove('print-mode');
+      else if (type === 'PRINT_DOCUMENT') window.print();
+      else if (type === 'DOWNLOAD_PDF') {
+        const { filename } = event.data;
+        document.body.classList.add('print-mode');
+        const target = document.getElementById('resume-container') || document.body;
+        setTimeout(() => {
+          const opt = {
+            margin:       0,
+            filename:     filename || 'resume.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, windowWidth: 794, windowHeight: 1123, scrollX: 0, scrollY: 0 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
+          };
+          html2pdf().set(opt).from(target).save().then(() => {
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_COMPLETE' }, '*');
+          }).catch(err => {
+            console.error('PDF Generation failed:', err);
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_ERROR' }, '*');
+          });
+        }, 200);
+      }
+    });
+
+    function renderData(data) {
+      if (!data) return;
+
+      const photoContainer = document.getElementById('cv-photo-container');
+      const photoImg = document.getElementById('cv-photo');
+      if (data.personal.photo) {
+        photoImg.src = data.personal.photo;
+        photoContainer.style.display = 'block';
+      } else {
+        photoImg.src = '';
+        photoContainer.style.display = 'none';
+      }
+
+      setText('cv-fullName', data.personal.fullName);
+      setText('cv-jobTitle', data.personal.jobTitle);
+      
+      toggleItem('cv-email-container', 'cv-email', data.personal.email);
+      toggleItem('cv-phone-container', 'cv-phone', data.personal.phone);
+      const loc = [data.personal.city, data.personal.country].filter(Boolean).join(', ');
+      toggleItem('cv-location-container', 'cv-location', loc);
+      toggleItem('cv-linkedin-container', 'cv-linkedin', data.social.linkedin ? data.social.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '') : '');
+
+      const sumEl = document.getElementById('section-summary');
+      if (data.summary && data.summary.trim() !== '') {
+        sumEl.style.display = 'block';
+        setText('cv-summary', data.summary);
+      } else {
+        sumEl.style.display = 'none';
+      }
+
+      renderList('experience', data.experience, item => `
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">${item.title || ''}</span>
+            <span class="item-date">${item.startDate || ''} - ${item.endDate || 'Present'}</span>
+          </div>
+          <div class="item-company">${item.company || ''} ${item.location ? `| ${item.location}` : ''}</div>
+          ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+        </div>
+      `);
+
+      renderList('education', data.education, item => `
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">${item.degree || ''}</span>
+            <span class="item-date">${item.startDate || ''} - ${item.endDate || 'Present'}</span>
+          </div>
+          <div class="item-company">${item.school || ''} ${item.location ? `| ${item.location}` : ''}</div>
+          ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+        </div>
+      `);
+
+      const skillsContainer = document.getElementById('cv-skills');
+      const skillsSection = document.getElementById('section-skills');
+      if (data.skills && data.skills.length > 0) {
+        skillsSection.style.display = 'block';
+        skillsContainer.innerHTML = data.skills.map(s => `<div class="skill-item">${s}</div>`).join('');
+      } else {
+        skillsSection.style.display = 'none';
+      }
+
+      const langContainer = document.getElementById('cv-languages');
+      const langSection = document.getElementById('section-languages');
+      if (data.languages && data.languages.length > 0) {
+        langSection.style.display = 'block';
+        langContainer.innerHTML = data.languages.map(l => `<div class="lang-item"><span>${l.name}</span> <span class="lang-level">${l.level||''}</span></div>`).join('');
+      } else {
+        langSection.style.display = 'none';
+      }
+    }
+
+    function renderList(section, items, templateFn) {
+      const el = document.getElementById(`cv-${section}`);
+      const secEl = document.getElementById(`section-${section}`);
+      if (items && items.length > 0) {
+        secEl.style.display = 'block';
+        el.innerHTML = items.map(templateFn).join('');
+      } else {
+        secEl.style.display = 'none';
+      }
+    }
+
+    function renderDesign(design) {
+      if (!design) return;
+      const root = document.documentElement;
+      root.style.setProperty('--accent', design.color);
+      root.style.setProperty('--font-family', design.font);
+      root.style.setProperty('--base-font-size', `${design.fontSize}px`);
+      root.style.setProperty('--spacing-factor', design.spacing);
+    }
+
+    function setText(id, text) { document.getElementById(id).textContent = text || ''; }
+    function toggleItem(cid, tid, text) {
+      const c = document.getElementById(cid);
+      if (text && text.trim()) { c.style.display = 'flex'; document.getElementById(tid).textContent = text; }
+      else c.style.display = 'none';
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

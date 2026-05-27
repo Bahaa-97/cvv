@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeForge — Free Professional CV & Resume Templates</title>
+  <meta name="description" content="Browse 100+ free professional CV and resume templates. Edit online, preview live, and download as high-quality PDF — no signup required." />
+  <meta name="keywords" content="free resume templates, CV templates, professional resume, ATS resume, Arabic CV, download PDF resume" />
+  <meta name="author" content="ResumeForge" />
+  <meta property="og:title" content="ResumeForge — Free Professional CV & Resume Templates" />
+  <meta property="og:description" content="Browse 100+ free professional CV and resume templates. Edit online, preview live, and download as PDF." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.webp" />
+  <link rel="canonical" href="https://resumeforge.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ResumeForge",
+    "url": "https://resumeforge.github.io/",
+    "description": "Free professional CV and resume templates",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://resumeforge.github.io/templates.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" aria-label="ResumeForge Home">
+        <div class="logo-icon">
+          <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+        </div>
+        <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav_home">Home</a></li>
+        <li><a href="templates.html" class="nav-link" data-i18n="nav_templates">Templates</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+        <li><a href="analyzer.html" class="nav-link" data-i18n="nav_analyzer">AI Analyzer</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" id="langToggle">
+          <i class="fa-solid fa-language" aria-hidden="true"></i> <span class="lang-toggle-text">عربي</span>
+        </button>
+        <button class="btn-icon" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
+        </button>
+        <a href="templates.html" class="btn btn-primary btn-sm" data-i18n="nav_browse">Browse Templates</a>
+      </div>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html" class="mobile-link active" data-i18n="nav_home">Home</a>
+      <a href="templates.html" class="mobile-link" data-i18n="nav_templates">Templates</a>
+      <a href="about.html" class="mobile-link" data-i18n="nav_about">About</a>
+      <a href="analyzer.html" class="mobile-link" data-i18n="nav_analyzer">AI Analyzer</a>
+      <a href="contact.html" class="mobile-link" data-i18n="nav_contact">Contact</a>
+      <a href="templates.html" class="btn btn-primary mobile-cta" data-i18n="nav_browse">Browse Templates</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg-shapes" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="hero-grid"></div>
+      </div>
+      <div class="container hero-container">
+        <div class="hero-badge" data-aos="fade-down">
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
+          <span data-i18n="hero_badge">100% Free · No Signup Required</span>
+        </div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+          <span data-i18n="hero_title_1">Build Your Perfect Resume</span>
+          <span class="hero-title-gradient" data-i18n="hero_title_2">in Minutes</span>
+        </h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
+          Choose from 50+ professionally designed templates, customize with your information,
+          and download as a high-quality PDF. Land your dream job today.
+        </p>
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+          <a href="templates.html" class="btn btn-primary btn-lg" id="heroBrowseBtn">
+            <i class="fa-solid fa-grid-2" aria-hidden="true"></i>
+            <span data-i18n="hero_btn_browse">Browse Templates</span>
+          </a>
+          <a href="#how-it-works" class="btn btn-ghost btn-lg">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+            <span data-i18n="hero_btn_how">How It Works</span>
+          </a>
+        </div>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat">
+            <span class="stat-number" data-count="50">0</span><span>+</span>
+            <span class="stat-label" data-i18n="stat_templates">Templates</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="120000">0</span><span>+</span>
+            <span class="stat-label" data-i18n="stat_downloads">Downloads</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="98">0</span><span>%</span>
+            <span class="stat-label" data-i18n="stat_satisfaction">Satisfaction</span>
+          </div>
+        </div>
+      </div>
+      <!-- Hero preview cards -->
+      <div class="hero-preview-cards" aria-hidden="true" data-aos="fade-left" data-aos-delay="200">
+        <div class="preview-card preview-card--1">
+          <div class="preview-card-inner">
+            <div class="pc-header" style="background: #6366f1;"></div>
+            <div class="pc-line pc-line--wide"></div>
+            <div class="pc-line"></div>
+            <div class="pc-line pc-line--med"></div>
+            <div class="pc-section-title"></div>
+            <div class="pc-line"></div>
+            <div class="pc-line pc-line--med"></div>
+          </div>
+        </div>
+        <div class="preview-card preview-card--2">
+          <div class="preview-card-inner">
+            <div class="pc-sidebar" style="background: #f43f5e;"></div>
+            <div class="pc-content">
+              <div class="pc-line pc-line--wide"></div>
+              <div class="pc-line"></div>
+              <div class="pc-line pc-line--med"></div>
+              <div class="pc-section-title"></div>
+              <div class="pc-line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-card preview-card--3">
+          <div class="preview-card-inner">
+            <div class="pc-line pc-line--wide"></div>
+            <div class="pc-line pc-line--med"></div>
+            <div class="pc-divider"></div>
+            <div class="pc-line"></div>
+            <div class="pc-line pc-line--med"></div>
+            <div class="pc-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section-padding" id="features" aria-label="Features">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge" data-i18n="feat_badge">Why ResumeForge</span>
+          <h2 class="section-title" data-i18n="feat_title">Everything You Need to Land Your Dream Job</h2>
+          <p class="section-subtitle" data-i18n="feat_subtitle">A complete, free toolkit for building professional resumes with zero technical skill required.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon feature-icon--purple">
+              <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_1_title">Live Preview Editor</h3>
+            <p data-i18n="feat_1_desc">See changes in real-time as you type. No guessing — what you see is what you get.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="feature-icon feature-icon--blue">
+              <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_2_title">High-Quality PDF Export</h3>
+            <p data-i18n="feat_2_desc">Download your resume as a professional PDF, ready to send to any employer.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon feature-icon--green">
+              <i class="fa-solid fa-robot" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_3_title">ATS-Optimized Templates</h3>
+            <p data-i18n="feat_3_desc">Our templates are crafted to pass Applicant Tracking Systems with high scores.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="feature-icon feature-icon--pink">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_4_title">Bilingual Support</h3>
+            <p data-i18n="feat_4_desc">Full Arabic and English support with proper RTL/LTR text rendering for both languages.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon feature-icon--orange">
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_5_title">Customizable Colors & Fonts</h3>
+            <p data-i18n="feat_5_desc">Match your personal brand with customizable color schemes and typography.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="feature-icon feature-icon--teal">
+              <i class="fa-solid fa-lock-open" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="feat_6_title">100% Free, No Login</h3>
+            <p data-i18n="feat_6_desc">No hidden fees, no signup, no limitations. Just pick a template and get started.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works section-padding" id="how-it-works" aria-label="How it works">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge" data-i18n="how_badge">Simple Process</span>
+          <h2 class="section-title" data-i18n="how_title">From Template to Interview in 3 Steps</h2>
+        </div>
+        <div class="steps-container">
+          <div class="step" data-aos="fade-right" data-aos-delay="100">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3 data-i18n="how_1_title">Choose a Template</h3>
+              <p data-i18n="how_1_desc">Browse our curated collection of professional templates. Filter by style, category, or search for what you need.</p>
+            </div>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <div class="step" data-aos="fade-up" data-aos-delay="200">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3 data-i18n="how_2_title">Fill Your Info</h3>
+              <p data-i18n="how_2_desc">Enter your details in the intuitive editor. See a live preview update as you type — no surprises.</p>
+            </div>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <div class="step" data-aos="fade-left" data-aos-delay="300">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3 data-i18n="how_3_title">Download PDF</h3>
+              <p data-i18n="how_3_desc">Hit download and get a pixel-perfect, print-ready PDF. Ready to send to employers immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Templates Section -->
+    <section class="popular-templates section-padding" aria-label="Popular templates">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge" data-i18n="pop_badge">Most Popular</span>
+          <h2 class="section-title" data-i18n="pop_title">Trending Resume Templates</h2>
+          <p class="section-subtitle" data-i18n="pop_subtitle">Hand-picked by our team — tried, tested, and loved by thousands.</p>
+        </div>
+        <div class="templates-grid" id="featuredTemplatesGrid" role="list">
+          <!-- Populated by JS -->
+          <div class="templates-loading" aria-live="polite">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+        </div>
+        <div class="section-cta" data-aos="fade-up">
+          <a href="templates.html" class="btn btn-outline btn-lg">
+            <span data-i18n="pop_btn">View All Templates</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories section-padding" aria-label="Template categories">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge" data-i18n="cat_badge">Browse by Category</span>
+          <h2 class="section-title" data-i18n="cat_title">Find the Perfect Template for Your Industry</h2>
+        </div>
+        <div class="categories-grid">
+          <a href="templates.html?category=modern" class="category-card" data-aos="zoom-in" data-aos-delay="50">
+            <div class="category-icon" style="--cat-color: #6366f1;">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_modern">Modern</span>
+            <span class="category-count">12 templates</span>
+          </a>
+          <a href="templates.html?category=minimal" class="category-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="category-icon" style="--cat-color: #0ea5e9;">
+              <i class="fa-solid fa-minimize" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_minimal">Minimal</span>
+            <span class="category-count">9 templates</span>
+          </a>
+          <a href="templates.html?category=creative" class="category-card" data-aos="zoom-in" data-aos-delay="150">
+            <div class="category-icon" style="--cat-color: #f43f5e;">
+              <i class="fa-solid fa-paintbrush" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_creative">Creative</span>
+            <span class="category-count">8 templates</span>
+          </a>
+          <a href="templates.html?category=ats" class="category-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="category-icon" style="--cat-color: #10b981;">
+              <i class="fa-solid fa-check-double" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_ats">ATS Friendly</span>
+            <span class="category-count">11 templates</span>
+          </a>
+          <a href="templates.html?category=arabic" class="category-card" data-aos="zoom-in" data-aos-delay="250">
+            <div class="category-icon" style="--cat-color: #8b5cf6;">
+              <i class="fa-solid fa-language" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_arabic">Arabic / عربي</span>
+            <span class="category-count">7 templates</span>
+          </a>
+          <a href="templates.html?category=executive" class="category-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="category-icon" style="--cat-color: #f59e0b;">
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+            </div>
+            <span class="category-name" data-i18n="cat_exec">Executive</span>
+            <span class="category-count">6 templates</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner section-padding" aria-label="Call to action">
+      <div class="container">
+        <div class="cta-card" data-aos="zoom-in">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <div class="cta-content">
+            <h2 data-i18n="cta_title">Ready to Build Your Dream Resume?</h2>
+            <p data-i18n="cta_desc">Join thousands of professionals who landed jobs with ResumeForge. It's 100% free — always.</p>
+            <div class="cta-actions">
+              <a href="templates.html" class="btn btn-white btn-lg" id="ctaBrowseBtn">
+                <i class="fa-solid fa-grid-2" aria-hidden="true"></i>
+                <span data-i18n="cta_btn">Get Started Free</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="ResumeForge">
+            <div class="logo-icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
+            <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+          </a>
+          <p data-i18n="footer_desc">Build professional resumes for free. No signup. No limits.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_1">Templates</h4>
+          <ul>
+            <li><a href="templates.html?category=modern" data-i18n="cat_modern">Modern</a></li>
+            <li><a href="templates.html?category=minimal" data-i18n="cat_minimal">Minimal</a></li>
+            <li><a href="templates.html?category=creative" data-i18n="cat_creative">Creative</a></li>
+            <li><a href="templates.html?category=ats" data-i18n="cat_ats">ATS Friendly</a></li>
+            <li><a href="templates.html?category=arabic" data-i18n="cat_arabic">Arabic</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_2">Pages</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="templates.html" data-i18n="nav_templates">Templates</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="analyzer.html" data-i18n="nav_analyzer">AI Analyzer</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_3">Resources</h4>
+          <ul>
+            <li><a href="#" data-i18n="footer_tips">Resume Tips</a></li>
+            <li><a href="#" data-i18n="footer_guide">ATS Guide</a></li>
+            <li><a href="#" data-i18n="footer_cover">Cover Letter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><span data-i18n="footer_rights">&copy; 2025 ResumeForge. All rights reserved.</span> Made with <i class="fa-solid fa-heart" aria-hidden="true" style="color:#f43f5e;"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Core Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/templates-registry.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

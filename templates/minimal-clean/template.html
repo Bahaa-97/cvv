@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimal Clean Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Georgia&family=Courier+New&family=Times+New+Roman&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- This is the container that html2pdf will capture -->
+  <div class="resume-container" id="resume-container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-photo-container" id="cv-photo-container" style="display:none;">
+        <img id="cv-photo" src="" alt="Profile Photo" class="profile-photo" />
+      </div>
+      <div class="header-content">
+        <h1 class="name" id="cv-fullName">Name Here</h1>
+        <h2 class="job-title" id="cv-jobTitle">Job Title</h2>
+        <div class="contact-info">
+          <span id="cv-email-container"><span id="cv-email"></span></span>
+          <span id="cv-phone-container"><span class="separator">•</span><span id="cv-phone"></span></span>
+          <span id="cv-location-container"><span class="separator">•</span><span id="cv-location"></span></span>
+          <span id="cv-website-container"><span class="separator">•</span><span id="cv-website"></span></span>
+        </div>
+        <div class="contact-info">
+          <span id="cv-linkedin-container">LinkedIn: <span id="cv-linkedin"></span></span>
+          <span id="cv-github-container"><span class="separator">•</span>GitHub: <span id="cv-github"></span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="section" id="section-summary">
+      <p class="summary-text" id="cv-summary"></p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="section-experience">
+      <h3 class="section-title">Experience</h3>
+      <div class="list-container" id="cv-experience"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="section-education">
+      <h3 class="section-title">Education</h3>
+      <div class="list-container" id="cv-education"></div>
+    </section>
+
+    <div class="bottom-grid">
+      <!-- SKILLS -->
+      <section class="section" id="section-skills">
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-container" id="cv-skills"></div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section class="section" id="section-languages">
+        <h3 class="section-title">Languages</h3>
+        <div class="languages-container" id="cv-languages"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      const { type, data, design } = event.data;
+
+      if (type === 'UPDATE_DATA') {
+        renderData(data);
+      } else if (type === 'UPDATE_DESIGN') {
+        renderDesign(design);
+      } else if (type === 'PREPARE_PRINT') {
+        document.body.classList.add('print-mode');
+      } else if (type === 'END_PRINT') {
+        document.body.classList.remove('print-mode');
+      } else if (type === 'DOWNLOAD_PDF') {
+        const { filename } = event.data;
+        document.body.classList.add('print-mode');
+        const target = document.getElementById('resume-container') || document.body;
+        
+        // Wait for styles to apply
+        setTimeout(() => {
+          const opt = {
+            margin:       0,
+            filename:     filename || 'resume.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, windowWidth: 794, windowHeight: 1123, scrollX: 0, scrollY: 0 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
+          };
+          
+          html2pdf().set(opt).from(target).save().then(() => {
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_COMPLETE' }, '*');
+          }).catch(err => {
+            console.error('PDF Generation failed:', err);
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_ERROR' }, '*');
+          });
+        }, 200);
+      } else if (type === 'PRINT_DOCUMENT') {
+        window.print();
+      }
+    });
+
+    function renderData(data) {
+      if (!data) return;
+
+      const photoContainer = document.getElementById('cv-photo-container');
+      const photoImg = document.getElementById('cv-photo');
+      if (data.personal.photo) {
+        photoImg.src = data.personal.photo;
+        photoContainer.style.display = 'block';
+      } else {
+        photoImg.src = '';
+        photoContainer.style.display = 'none';
+      }
+
+      setText('cv-fullName', data.personal.fullName);
+      setText('cv-jobTitle', data.personal.jobTitle);
+      
+      toggleInlineItem('cv-email-container', 'cv-email', data.personal.email);
+      toggleInlineItem('cv-phone-container', 'cv-phone', data.personal.phone);
+      
+      const loc = [data.personal.city, data.personal.country].filter(Boolean).join(', ');
+      toggleInlineItem('cv-location-container', 'cv-location', loc);
+      toggleInlineItem('cv-website-container', 'cv-website', data.personal.website ? data.personal.website.replace(/^https?:\/\//, '') : '');
+      
+      toggleInlineItem('cv-linkedin-container', 'cv-linkedin', data.social.linkedin ? data.social.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '') : '');
+      toggleInlineItem('cv-github-container', 'cv-github', data.social.github ? data.social.github.replace(/^https?:\/\/(www\.)?github\.com\//, '') : '');
+
+      const sumEl = document.getElementById('section-summary');
+      if (data.summary && data.summary.trim() !== '') {
+        sumEl.style.display = 'block';
+        setText('cv-summary', data.summary);
+      } else {
+        sumEl.style.display = 'none';
+      }
+
+      const expContainer = document.getElementById('cv-experience');
+      const expSection = document.getElementById('section-experience');
+      if (data.experience && data.experience.length > 0) {
+        expSection.style.display = 'block';
+        expContainer.innerHTML = data.experience.map(item => `
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">${item.title || ''} ${item.company ? `<span class="item-company">at ${item.company}</span>` : ''}</span>
+              ${item.startDate ? `<span class="item-date">${item.startDate} — ${item.endDate || 'Present'}</span>` : ''}
+            </div>
+            ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+          </div>
+        `).join('');
+      } else {
+        expSection.style.display = 'none';
+      }
+
+      const eduContainer = document.getElementById('cv-education');
+      const eduSection = document.getElementById('section-education');
+      if (data.education && data.education.length > 0) {
+        eduSection.style.display = 'block';
+        eduContainer.innerHTML = data.education.map(item => `
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">${item.degree || ''} ${item.school ? `<span class="item-company">, ${item.school}</span>` : ''}</span>
+              ${item.startDate ? `<span class="item-date">${item.startDate} — ${item.endDate || 'Present'}</span>` : ''}
+            </div>
+            ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+          </div>
+        `).join('');
+      } else {
+        eduSection.style.display = 'none';
+      }
+
+      const skillsContainer = document.getElementById('cv-skills');
+      const skillsSection = document.getElementById('section-skills');
+      if (data.skills && data.skills.length > 0) {
+        skillsSection.style.display = 'block';
+        skillsContainer.innerHTML = data.skills.join(' <span class="separator">•</span> ');
+      } else {
+        skillsSection.style.display = 'none';
+      }
+
+      const langContainer = document.getElementById('cv-languages');
+      const langSection = document.getElementById('section-languages');
+      if (data.languages && data.languages.length > 0) {
+        langSection.style.display = 'block';
+        langContainer.innerHTML = data.languages.map(lang => `${lang.name} (${lang.level || ''})`).join(' <span class="separator">•</span> ');
+      } else {
+        langSection.style.display = 'none';
+      }
+    }
+
+    function renderDesign(design) {
+      if (!design) return;
+      const root = document.documentElement;
+      root.style.setProperty('--primary-color', design.color);
+      root.style.setProperty('--font-family', design.font);
+      root.style.setProperty('--base-font-size', `${design.fontSize}px`);
+      root.style.setProperty('--spacing-factor', design.spacing);
+    }
+
+    function setText(id, text) {
+      document.getElementById(id).textContent = text || '';
+    }
+
+    function toggleInlineItem(containerId, textId, text) {
+      const container = document.getElementById(containerId);
+      if (text && text.trim() !== '') {
+        container.style.display = 'inline';
+        document.getElementById(textId).textContent = text;
+      } else {
+        container.style.display = 'none';
+      }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

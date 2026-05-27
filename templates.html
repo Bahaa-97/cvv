@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse CV Templates — ResumeForge</title>
+  <meta name="description" content="Browse 50+ free professional resume templates. Filter by Modern, Minimal, Creative, ATS-Friendly, and Arabic styles. Download as PDF instantly." />
+  <meta name="keywords" content="free resume templates, CV templates, ATS resume, creative resume, minimal resume, Arabic CV" />
+  <link rel="canonical" href="https://resumeforge.github.io/templates.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/templates-page.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" aria-label="ResumeForge Home">
+        <div class="logo-icon"><i class="fa-solid fa-file-lines"></i></div>
+        <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+        <li><a href="templates.html" class="nav-link active" aria-current="page" data-i18n="nav_templates">Templates</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+        <li><a href="analyzer.html" class="nav-link" data-i18n="nav_analyzer">AI Analyzer</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" id="langToggle">
+          <i class="fa-solid fa-language" aria-hidden="true"></i> <span class="lang-toggle-text">عربي</span>
+        </button>
+        <button class="btn-icon" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html" class="mobile-link" data-i18n="nav_home">Home</a>
+      <a href="templates.html" class="mobile-link active" data-i18n="nav_templates">Templates</a>
+      <a href="about.html" class="mobile-link" data-i18n="nav_about">About</a>
+      <a href="analyzer.html" class="mobile-link" data-i18n="nav_analyzer">AI Analyzer</a>
+      <a href="contact.html" class="mobile-link" data-i18n="nav_contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main-content" style="padding-top: var(--navbar-height);">
+    <!-- Page Header -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content" data-aos="fade-up">
+          <span class="section-badge" data-i18n="tpl_badge">Template Library</span>
+          <h1 data-i18n="tpl_title">Find Your Perfect Resume Template</h1>
+          <p data-i18n="tpl_subtitle">Handcrafted templates for every industry, style, and career level. 100% free.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Bar -->
+    <section class="templates-controls" id="templatesControls">
+      <div class="container">
+        <div class="controls-row">
+          <!-- Search -->
+          <div class="search-bar" style="flex:1; max-width:400px;">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input
+              type="search"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search templates..."
+              data-i18n="tpl_search_placeholder"
+              aria-label="Search templates"
+              autocomplete="off"
+            />
+            <button class="search-clear" id="searchClear" aria-label="Clear search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Sort -->
+          <div class="sort-group">
+            <label for="sortSelect" class="sort-label" data-i18n="tpl_sort">Sort by:</label>
+            <select id="sortSelect" class="form-control sort-select" aria-label="Sort templates">
+              <option value="featured" data-i18n="tpl_sort_feat">Featured</option>
+              <option value="downloads" data-i18n="tpl_sort_dl">Most Downloaded</option>
+              <option value="ats" data-i18n="tpl_sort_ats">Highest ATS Score</option>
+              <option value="name" data-i18n="tpl_sort_name">Name A-Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="filter-pills" role="group" aria-label="Filter by category" id="filterPills">
+          <button class="filter-pill active" data-filter="all" id="filterAll">
+            <i class="fa-solid fa-border-all" aria-hidden="true"></i> <span data-i18n="tpl_filter_all">All Templates</span>
+          </button>
+          <button class="filter-pill" data-filter="modern">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span data-i18n="cat_modern">Modern</span>
+          </button>
+          <button class="filter-pill" data-filter="minimal">
+            <i class="fa-solid fa-minimize" aria-hidden="true"></i> <span data-i18n="cat_minimal">Minimal</span>
+          </button>
+          <button class="filter-pill" data-filter="creative">
+            <i class="fa-solid fa-paintbrush" aria-hidden="true"></i> <span data-i18n="cat_creative">Creative</span>
+          </button>
+          <button class="filter-pill" data-filter="ats">
+            <i class="fa-solid fa-check-double" aria-hidden="true"></i> <span data-i18n="cat_ats">ATS Friendly</span>
+          </button>
+          <button class="filter-pill" data-filter="arabic">
+            <i class="fa-solid fa-language" aria-hidden="true"></i> <span data-i18n="cat_arabic">Arabic / عربي</span>
+          </button>
+        </div>
+
+        <!-- Results count -->
+        <p class="results-count" id="resultsCount" aria-live="polite">
+          <span data-i18n="tpl_showing">Showing</span> <strong id="countNum">0</strong> <span data-i18n="tpl_templates">templates</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Templates Grid -->
+    <section class="templates-section">
+      <div class="container">
+        <div class="templates-grid-full" id="templatesGrid" role="list" aria-label="Resume templates">
+          <!-- Populated by JS -->
+        </div>
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+          <h3 data-i18n="tpl_empty_title">No Templates Found</h3>
+          <p data-i18n="tpl_empty_desc">Try adjusting your search or filters to find what you're looking for.</p>
+          <button class="btn btn-outline" id="clearFilters" data-i18n="tpl_clear_filters">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <span class="logo-text">Resume<span class="logo-accent">Forge</span></span>
+          </a>
+          <p data-i18n="footer_desc">Build professional resumes for free. No signup. No limits.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_1">Templates</h4>
+          <ul>
+            <li><a href="templates.html?category=modern" data-i18n="cat_modern">Modern</a></li>
+            <li><a href="templates.html?category=minimal" data-i18n="cat_minimal">Minimal</a></li>
+            <li><a href="templates.html?category=creative" data-i18n="cat_creative">Creative</a></li>
+            <li><a href="templates.html?category=ats" data-i18n="cat_ats">ATS Friendly</a></li>
+            <li><a href="templates.html?category=arabic" data-i18n="cat_arabic">Arabic</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_2">Pages</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="templates.html" data-i18n="nav_templates">Templates</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="analyzer.html" data-i18n="nav_analyzer">AI Analyzer</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_3">Resources</h4>
+          <ul>
+            <li><a href="#" data-i18n="footer_tips">Resume Tips</a></li>
+            <li><a href="#" data-i18n="footer_guide">ATS Guide</a></li>
+            <li><a href="#" data-i18n="footer_cover">Cover Letter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><span data-i18n="footer_rights">&copy; 2025 ResumeForge. All rights reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/templates-registry.js"></script>
+  <script src="js/templates-page.js"></script>
+</body>
+</html>

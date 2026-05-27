@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATS Master Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="resume-container" id="resume-container">
+    
+    <header class="header">
+      <h1 class="name" id="cv-fullName">Name Here</h1>
+      <div class="contact-info">
+        <span id="cv-email-container"><span id="cv-email"></span></span>
+        <span id="cv-phone-container"> | <span id="cv-phone"></span></span>
+        <span id="cv-location-container"> | <span id="cv-location"></span></span>
+        <span id="cv-linkedin-container"> | <span id="cv-linkedin"></span></span>
+      </div>
+    </header>
+
+    <section class="section" id="section-summary">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary-text" id="cv-summary"></p>
+    </section>
+
+    <section class="section" id="section-experience">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="list-container" id="cv-experience"></div>
+    </section>
+
+    <section class="section" id="section-education">
+      <h2 class="section-title">Education</h2>
+      <div class="list-container" id="cv-education"></div>
+    </section>
+
+    <section class="section" id="section-skills">
+      <h2 class="section-title">Skills & Competencies</h2>
+      <p class="skills-container" id="cv-skills"></p>
+    </section>
+
+    <section class="section" id="section-languages">
+      <h2 class="section-title">Languages</h2>
+      <p class="languages-container" id="cv-languages"></p>
+    </section>
+  </div>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      const { type, data, design } = event.data;
+      if (type === 'UPDATE_DATA') renderData(data);
+      else if (type === 'UPDATE_DESIGN') renderDesign(design);
+      else if (type === 'PREPARE_PRINT') document.body.classList.add('print-mode');
+      else if (type === 'END_PRINT') document.body.classList.remove('print-mode');
+      else if (type === 'PRINT_DOCUMENT') window.print();
+      else if (type === 'DOWNLOAD_PDF') {
+        const { filename } = event.data;
+        document.body.classList.add('print-mode');
+        const target = document.getElementById('resume-container') || document.body;
+        setTimeout(() => {
+          const opt = {
+            margin:       0,
+            filename:     filename || 'resume.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, windowWidth: 794, windowHeight: 1123, scrollX: 0, scrollY: 0 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
+          };
+          html2pdf().set(opt).from(target).save().then(() => {
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_COMPLETE' }, '*');
+          }).catch(err => {
+            console.error('PDF Generation failed:', err);
+            document.body.classList.remove('print-mode');
+            window.parent.postMessage({ type: 'DOWNLOAD_ERROR' }, '*');
+          });
+        }, 200);
+      }
+    });
+
+    function renderData(data) {
+      if (!data) return;
+
+      setText('cv-fullName', data.personal.fullName);
+      
+      toggleInline('cv-email-container', 'cv-email', data.personal.email);
+      toggleInline('cv-phone-container', 'cv-phone', data.personal.phone);
+      const loc = [data.personal.city, data.personal.country].filter(Boolean).join(', ');
+      toggleInline('cv-location-container', 'cv-location', loc);
+      toggleInline('cv-linkedin-container', 'cv-linkedin', data.social.linkedin ? data.social.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '') : '');
+
+      const sumEl = document.getElementById('section-summary');
+      if (data.summary && data.summary.trim() !== '') {
+        sumEl.style.display = 'block';
+        setText('cv-summary', data.summary);
+      } else {
+        sumEl.style.display = 'none';
+      }
+
+      renderList('experience', data.experience, item => `
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">${item.title || ''}</span>
+            <span class="item-date">${item.startDate || ''} - ${item.endDate || 'Present'}</span>
+          </div>
+          <div class="item-company">${item.company || ''} ${item.location ? `, ${item.location}` : ''}</div>
+          ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+        </div>
+      `);
+
+      renderList('education', data.education, item => `
+        <div class="item">
+          <div class="item-header">
+            <span class="item-title">${item.degree || ''}</span>
+            <span class="item-date">${item.startDate || ''} - ${item.endDate || 'Present'}</span>
+          </div>
+          <div class="item-company">${item.school || ''} ${item.location ? `, ${item.location}` : ''}</div>
+          ${item.description ? `<p class="item-desc">${item.description.replace(/\n/g, '<br>')}</p>` : ''}
+        </div>
+      `);
+
+      const skillsSection = document.getElementById('section-skills');
+      if (data.skills && data.skills.length > 0) {
+        skillsSection.style.display = 'block';
+        document.getElementById('cv-skills').innerHTML = data.skills.join(', ');
+      } else {
+        skillsSection.style.display = 'none';
+      }
+
+      const langSection = document.getElementById('section-languages');
+      if (data.languages && data.languages.length > 0) {
+        langSection.style.display = 'block';
+        document.getElementById('cv-languages').innerHTML = data.languages.map(l => `${l.name} (${l.level||''})`).join(', ');
+      } else {
+        langSection.style.display = 'none';
+      }
+    }
+
+    function renderList(section, items, templateFn) {
+      const el = document.getElementById(`cv-${section}`);
+      const secEl = document.getElementById(`section-${section}`);
+      if (items && items.length > 0) {
+        secEl.style.display = 'block';
+        el.innerHTML = items.map(templateFn).join('');
+      } else {
+        secEl.style.display = 'none';
+      }
+    }
+
+    function renderDesign(design) {
+      if (!design) return;
+      const root = document.documentElement;
+      root.style.setProperty('--font-family', design.font);
+      root.style.setProperty('--base-font-size', `${design.fontSize}px`);
+      root.style.setProperty('--spacing-factor', design.spacing);
+    }
+
+    function setText(id, text) { document.getElementById(id).textContent = text || ''; }
+    function toggleInline(cid, tid, text) {
+      const c = document.getElementById(cid);
+      if (text && text.trim()) { c.style.display = 'inline'; document.getElementById(tid).textContent = text; }
+      else c.style.display = 'none';
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

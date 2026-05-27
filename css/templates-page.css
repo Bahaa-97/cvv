@@ -1,0 +1,141 @@
+/* ============================================================
+   ResumeForge — Templates Page Styles
+   ============================================================ */
+
+/* Page Hero */
+.page-hero {
+  padding: var(--space-16) 0 var(--space-12);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-elevated) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.page-hero-content {
+  text-align: center;
+}
+
+.page-hero-content h1 {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: var(--font-extrabold);
+  margin: var(--space-3) 0 var(--space-2);
+  letter-spacing: -0.03em;
+}
+
+.page-hero-content p {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+
+/* Controls */
+.templates-controls {
+  position: sticky;
+  top: var(--navbar-height);
+  z-index: var(--z-sticky);
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-4) 0;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.sort-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+  min-width: 180px;
+  cursor: pointer;
+}
+
+.results-count {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-3);
+}
+
+.results-count strong {
+  color: var(--brand-primary);
+}
+
+/* Templates Grid */
+.templates-section {
+  padding: var(--space-10) 0 var(--space-20);
+  background: var(--bg-base);
+}
+
+.templates-grid-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-20) 0;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+  opacity: 0.4;
+}
+
+.empty-state h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+}
+
+/* Template Card Animations */
+.template-card {
+  animation: cardFadeIn 0.4s ease forwards;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-group {
+    justify-content: space-between;
+  }
+
+  .sort-select { flex: 1; }
+
+  .search-bar { max-width: 100% !important; }
+}
