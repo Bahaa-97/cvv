@@ -17,18 +17,19 @@ body {
   font-family: var(--font-family);
   font-size: var(--base-font-size);
   color: var(--text-main);
-  background: var(--bg-dark);
+  background: #0a0a0a;
   line-height: var(--spacing-factor);
-  margin: 0 auto;
-  max-width: 210mm;
-  min-height: 297mm;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin: 0;
+  padding: 0;
 }
 
 .resume-container {
-  width: 100%;
-  height: 100%;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
   background: var(--bg-dark);
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  box-sizing: border-box;
 }
 
 .header {
@@ -171,11 +172,31 @@ body {
 }
 .lang-level { color: var(--accent); }
 
-/* Print adjustments */
-body.print-mode { box-shadow: none; width: 210mm; max-width: 210mm; margin: 0; padding: 0; min-height: auto; }
+/* Print / PDF Adjustments */
+body.print-mode {
+  background: var(--bg-dark);
+  margin: 0;
+  padding: 0;
+}
+
+body.print-mode .resume-container {
+  box-shadow: none;
+  margin: 0;
+  width: 100%;
+  min-height: auto;
+}
+
 @media print {
-  body { 
-    box-shadow: none; max-width: none;
+  body {
+    background: var(--bg-dark);
+    margin: 0;
+    padding: 0;
+  }
+  .resume-container {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

@@ -17,19 +17,20 @@ body {
   font-family: var(--font-family);
   font-size: var(--base-font-size);
   color: var(--text-main);
-  background: var(--bg-color);
+  background: #f0f0f0;
   line-height: var(--spacing-factor);
-  margin: 0 auto;
-  max-width: 210mm;
-  min-height: 297mm;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 0;
+  padding: 0;
 }
 
 .resume-container {
   display: flex;
-  width: 100%;
+  width: 210mm;
   min-height: 297mm;
+  margin: 0 auto;
   background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 /* Sidebar */
@@ -186,5 +187,28 @@ body {
   text-align: justify;
 }
 
-body.print-mode { box-shadow: none; width: 210mm; max-width: 210mm; margin: 0; padding: 0; min-height: auto; }
-@media print { body { box-shadow: none; max-width: none; } }
+/* Print / PDF Adjustments */
+body.print-mode {
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+body.print-mode .resume-container {
+  box-shadow: none;
+  margin: 0;
+  width: 100%;
+  min-height: auto;
+}
+
+@media print {
+  body { background: white; margin: 0; padding: 0; }
+  .resume-container {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
