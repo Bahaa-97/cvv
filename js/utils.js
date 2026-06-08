@@ -237,16 +237,7 @@ function buildTemplateCard(template) {
   card.innerHTML = `
     <div class="template-card-preview">
       ${template.featured ? '<span class="template-badge-featured">⭐ ' + (isAr ? 'مميز' : 'Featured') + '</span>' : ''}
-      <div class="template-iframe-container" id="iframe-container-${template.id}">
-        <iframe
-          src="${template.path}template.html"
-          class="template-iframe-preview"
-          id="iframe-${template.id}"
-          tabindex="-1"
-          aria-hidden="true"
-          scrolling="no">
-        </iframe>
-      </div>
+      <img src="${template.preview || 'assets/previews/placeholder.svg'}" alt="${name} Preview" loading="lazy" onerror="this.src='assets/previews/placeholder.svg'" />
       <div class="template-card-overlay">
         <a href="editor.html?template=${template.id}" class="btn btn-white btn-sm" tabindex="-1">
           <i class="fa-solid fa-pen-to-square"></i> ${editBtnText}
@@ -285,33 +276,6 @@ function buildTemplateCard(template) {
       window.location.href = `editor.html?template=${template.id}`;
     }
   });
-
-  const iframeContainer = card.querySelector(`#iframe-container-${template.id}`);
-  const iframe = card.querySelector(`#iframe-${template.id}`);
-  
-  if (iframe) {
-    iframe.onload = () => {
-      iframe.contentWindow.postMessage({
-        type: 'UPDATE_DATA',
-        data: getDummyData()
-      }, '*');
-      iframe.contentWindow.postMessage({
-        type: 'UPDATE_DESIGN',
-        design: { color: template.color || '#6366f1', font: 'Inter', fontSize: 11, spacing: 1.5 }
-      }, '*');
-    };
-  }
-
-  if (iframeContainer && iframe) {
-    const ro = new ResizeObserver(entries => {
-      for (let entry of entries) {
-        const width = entry.contentRect.width;
-        const scale = width / 800; // iframe base width is 800
-        iframe.style.transform = `scale(${scale})`;
-      }
-    });
-    ro.observe(iframeContainer);
-  }
 
   return card;
 }
