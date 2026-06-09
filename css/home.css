@@ -190,7 +190,7 @@
 /* Hero Preview Cards */
 .hero-preview-cards {
   position: absolute;
-  inset-inline-end: -20px;
+  right: -20px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -598,6 +598,11 @@
 }
 
 /* RTL Support */
+[dir="rtl"] .hero-preview-cards {
+  right: auto;
+  left: -20px;
+}
+
 [dir="rtl"] .step-connector::after {
   right: auto;
   left: -6px;
