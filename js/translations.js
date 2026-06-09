@@ -20,7 +20,7 @@ const translations = {
     "stat_satisfaction": "Satisfaction",
 
     // Features
-    "feat_badge": "Why ResumeForge",
+    "feat_badge": "Why CVFlow",
     "feat_title": "Everything You Need to Land Your Dream Job",
     "feat_subtitle": "A complete, free toolkit for building professional resumes with zero technical skill required.",
     "feat_1_title": "Live Preview Editor",
@@ -64,8 +64,8 @@ const translations = {
 
     // About Page
     "about_badge": "About Us",
-    "about_title": "About ResumeForge",
-    "about_subtitle": "ResumeForge is a free and simple resume builder focused on speed, clarity, and professional results.",
+    "about_title": "About CVFlow",
+    "about_subtitle": "CVFlow is a free and simple resume builder focused on speed, clarity, and professional results.",
     "about_mission_t": "Our mission",
     "about_mission_d": "We believe everyone should be able to create a high-quality resume without paying, signing up, or dealing with complex tools.",
     "about_what_t": "What you can do",
@@ -76,18 +76,18 @@ const translations = {
     // Contact Page
     "contact_badge": "Contact",
     "contact_title": "Get in Touch",
-    "contact_subtitle": "Share feedback, bug reports, or template ideas. We use your input to improve ResumeForge.",
+    "contact_subtitle": "Share feedback, bug reports, or template ideas. We use your input to improve CVFlow.",
     "contact_support_t": "Support",
     "contact_support_d": "For help with editor issues or PDF export, send details and steps to reproduce the problem.",
     "contact_partner_t": "Partnerships",
-    "contact_partner_d": "Interested in collaborating, adding industry templates, or integrating ResumeForge in your workflow?",
+    "contact_partner_d": "Interested in collaborating, adding industry templates, or integrating CVFlow in your workflow?",
     "contact_email": "Email:",
 
     // FAQ
     "faq_badge": "FAQ",
     "faq_title": "Frequently Asked Questions",
-    "faq_subtitle": "Everything you need to know about ResumeForge.",
-    "faq_1_q": "Is ResumeForge really 100% free?",
+    "faq_subtitle": "Everything you need to know about CVFlow.",
+    "faq_1_q": "Is CVFlow really 100% free?",
     "faq_1_a": "Yes! We believe everyone deserves a professional resume. There are no paywalls, no premium templates, and no watermarks on your PDF.",
     "faq_2_q": "Are my personal details safe?",
     "faq_2_a": "Absolutely. Your data never leaves your browser. We don't have servers, we don't save your CV, and we don't track your personal info. It's completely private.",
@@ -98,7 +98,7 @@ const translations = {
 
     // CTA
     "cta_title": "Ready to Build Your Dream Resume?",
-    "cta_desc": "Join thousands of professionals who landed jobs with ResumeForge. It's 100% free — always.",
+    "cta_desc": "Join thousands of professionals who landed jobs with CVFlow. It's 100% free — always.",
     "cta_btn": "Get Started Free",
 
     // Footer
@@ -109,7 +109,7 @@ const translations = {
     "footer_tips": "Resume Tips",
     "footer_guide": "ATS Guide",
     "footer_cover": "Cover Letter",
-    "footer_rights": "© 2025 ResumeForge. All rights reserved.",
+    "footer_rights": "© 2025 CVFlow. All rights reserved.",
 
     // Templates Page
     "tpl_badge": "Template Library",
@@ -217,7 +217,7 @@ const translations = {
     "stat_satisfaction": "رضا المستخدمين",
 
     // Features
-    "feat_badge": "لماذا ResumeForge",
+    "feat_badge": "لماذا CVFlow",
     "feat_title": "كل ما تحتاجه للحصول على وظيفة أحلامك",
     "feat_subtitle": "أداة مجانية وكاملة لإنشاء سير ذاتية احترافية بدون الحاجة لأي مهارات تقنية.",
     "feat_1_title": "محرر ومعاينة مباشرة",
@@ -261,8 +261,8 @@ const translations = {
 
     // About Page
     "about_badge": "من نحن",
-    "about_title": "عن ResumeForge",
-    "about_subtitle": "موقع ResumeForge هو أداة مجانية وبسيطة لإنشاء السير الذاتية تركز على السرعة، الوضوح، والنتائج الاحترافية.",
+    "about_title": "عن CVFlow",
+    "about_subtitle": "موقع CVFlow هو أداة مجانية وبسيطة لإنشاء السير الذاتية تركز على السرعة، الوضوح، والنتائج الاحترافية.",
     "about_mission_t": "مهمتنا",
     "about_mission_d": "نؤمن بأن كل شخص يجب أن يكون قادراً على إنشاء سيرة ذاتية عالية الجودة دون الدفع، أو التسجيل، أو التعامل مع أدوات معقدة.",
     "about_what_t": "ما الذي يمكنك فعله",
@@ -283,8 +283,8 @@ const translations = {
     // FAQ
     "faq_badge": "الأسئلة الشائعة",
     "faq_title": "الأسئلة المتكررة",
-    "faq_subtitle": "كل ما تحتاج معرفته حول ResumeForge.",
-    "faq_1_q": "هل موقع ResumeForge مجاني 100% حقاً؟",
+    "faq_subtitle": "كل ما تحتاج معرفته حول CVFlow.",
+    "faq_1_q": "هل موقع CVFlow مجاني 100% حقاً؟",
     "faq_1_a": "نعم! نؤمن بأن الجميع يستحق سيرة ذاتية احترافية. لا توجد رسوم خفية، ولا قوالب مدفوعة، ولا توجد علامة مائية على ملف الـ PDF الخاص بك.",
     "faq_2_q": "هل بياناتي الشخصية آمنة؟",
     "faq_2_a": "بالتأكيد. بياناتك لا تخرج أبداً من متصفحك. نحن لا نمتلك خوادم لحفظ السير الذاتية، ولا نتتبع معلوماتك الشخصية. الخصوصية مضمونة 100%.",
@@ -295,7 +295,7 @@ const translations = {
 
     // CTA
     "cta_title": "هل أنت مستعد لإنشاء سيرة ذاتية رائعة؟",
-    "cta_desc": "انضم إلى آلاف المحترفين الذين حصلوا على وظائف عبر ResumeForge. مجاني 100% — دائماً.",
+    "cta_desc": "انضم إلى آلاف المحترفين الذين حصلوا على وظائف عبر CVFlow. مجاني 100% — دائماً.",
     "cta_btn": "ابدأ الآن مجاناً",
 
     // Footer
@@ -306,7 +306,7 @@ const translations = {
     "footer_tips": "نصائح السيرة الذاتية",
     "footer_guide": "دليل ATS",
     "footer_cover": "خطاب المقدمة",
-    "footer_rights": "© 2025 ResumeForge. جميع الحقوق محفوظة.",
+    "footer_rights": "© 2025 CVFlow. جميع الحقوق محفوظة.",
 
     // Templates Page
     "tpl_badge": "مكتبة القوالب",
@@ -394,5 +394,5 @@ const translations = {
   }
 };
 
-window.ResumeForge = window.ResumeForge || {};
-window.ResumeForge.translations = translations;
+window.CVFlow = window.CVFlow || {};
+window.CVFlow.translations = translations;

@@ -1,14 +1,14 @@
 /**
- * ResumeForge — Templates Registry
+ * CVFlow — Templates Registry
  * Loads templates.json and provides a registry API.
  * All pages use this as the single source of truth for templates.
  *
  * Usage:
- *   await window.ResumeForge.templates.load();
- *   const all = window.ResumeForge.templates.getAll();
- *   const featured = window.ResumeForge.templates.getFeatured();
- *   const tpl = window.ResumeForge.templates.getById('modern-pro');
- *   const filtered = window.ResumeForge.templates.filter({ category: 'modern', q: 'clean' });
+ *   await window.CVFlow.templates.load();
+ *   const all = window.CVFlow.templates.getAll();
+ *   const featured = window.CVFlow.templates.getFeatured();
+ *   const tpl = window.CVFlow.templates.getById('modern-pro');
+ *   const filtered = window.CVFlow.templates.filter({ category: 'modern', q: 'clean' });
  */
 
 (function TemplatesRegistryModule() {
@@ -139,8 +139,8 @@
   }
 
   // ── Expose API ────────────────────────────────────────────
-  window.ResumeForge = window.ResumeForge || {};
-  window.ResumeForge.templates = {
+  window.CVFlow = window.CVFlow || {};
+  window.CVFlow.templates = {
     load,
     getAll,
     getFeatured,

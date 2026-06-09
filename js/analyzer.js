@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsCard.classList.remove('active');
     
     // Apply translations if language is Arabic
-    if (window.ResumeForge && window.ResumeForge.translations) {
+    if (window.CVFlow && window.CVFlow.translations) {
         const lang = localStorage.getItem('rf_lang') || 'en';
         if (lang === 'ar') {
-            analyzeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span data-i18n="analyzer_analyzing">' + window.ResumeForge.translations.ar.analyzer_analyzing + '</span>';
+            analyzeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span data-i18n="analyzer_analyzing">' + window.CVFlow.translations.ar.analyzer_analyzing + '</span>';
         }
     }
 
@@ -161,9 +161,9 @@ ${extractedCvText}`;
     } catch (err) {
       console.error(err);
       let errorMsg = "An error occurred during analysis. Please check your API key and try again.";
-      if (window.ResumeForge && window.ResumeForge.translations) {
+      if (window.CVFlow && window.CVFlow.translations) {
         const lang = localStorage.getItem('rf_lang') || 'en';
-        errorMsg = window.ResumeForge.translations[lang].analyzer_error;
+        errorMsg = window.CVFlow.translations[lang].analyzer_error;
       }
       alert(errorMsg + "\n\n[تفاصيل للمطورين]:\n" + err.message);
     } finally {

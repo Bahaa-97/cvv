@@ -1,5 +1,5 @@
 /**
- * ResumeForge — Utility Functions
+ * CVFlow — Utility Functions
  * Shared helpers used across all pages.
  */
 
@@ -144,7 +144,7 @@ function getCategoryStyle(category) {
  * @returns {string}
  */
 function getCategoryLabel(category) {
-  const lang = window.ResumeForge.lang ? window.ResumeForge.lang.get() : 'en';
+  const lang = window.CVFlow.lang ? window.CVFlow.lang.get() : 'en';
   const isAr = lang === 'ar';
   
   const labels = {
@@ -219,13 +219,13 @@ function buildTemplateCard(template) {
   const catStyle = getCategoryStyle(template.category);
   const catLabel = getCategoryLabel(template.category);
   
-  const lang = window.ResumeForge.lang ? window.ResumeForge.lang.get() : 'en';
+  const lang = window.CVFlow.lang ? window.CVFlow.lang.get() : 'en';
   const isAr = lang === 'ar';
   
   const name = isAr && template.nameAr ? template.nameAr : template.name;
   const description = isAr && template.descriptionAr ? template.descriptionAr : template.description;
-  const editBtnText = window.ResumeForge.translations ? 
-    (window.ResumeForge.translations[lang]['btn_edit_now'] || 'Edit Now') : 'Edit Now';
+  const editBtnText = window.CVFlow.translations ? 
+    (window.CVFlow.translations[lang]['btn_edit_now'] || 'Edit Now') : 'Edit Now';
 
   const card = document.createElement('article');
   card.className = 'template-card';
@@ -323,8 +323,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Export to global scope
-window.ResumeForge = window.ResumeForge || {};
-Object.assign(window.ResumeForge, {
+window.CVFlow = window.CVFlow || {};
+Object.assign(window.CVFlow, {
   formatNumber,
   debounce,
   getParam,

@@ -10,13 +10,13 @@ function loadScript(relativePath) {
 
 describe('language module', () => {
   it('persists selected language in localStorage', () => {
-    window.ResumeForge = { translations: { en: {}, ar: {} } };
+    window.CVFlow = { translations: { en: {}, ar: {} } };
     loadScript('js/language.js');
 
-    window.ResumeForge.lang.set('ar');
+    window.CVFlow.lang.set('ar');
 
     expect(localStorage.getItem('rf_lang')).toBe('ar');
-    expect(window.ResumeForge.lang.get()).toBe('ar');
+    expect(window.CVFlow.lang.get()).toBe('ar');
     expect(document.documentElement.lang).toBe('ar');
     expect(document.documentElement.dir).toBe('rtl');
   });
@@ -24,13 +24,13 @@ describe('language module', () => {
 
 describe('theme module', () => {
   it('applies and persists chosen theme', () => {
-    window.ResumeForge = {};
+    window.CVFlow = {};
     loadScript('js/theme.js');
 
-    window.ResumeForge.theme.apply('dark');
+    window.CVFlow.theme.apply('dark');
 
     expect(localStorage.getItem('rf_theme')).toBe('dark');
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(window.ResumeForge.theme.get()).toBe('dark');
+    expect(window.CVFlow.theme.get()).toBe('dark');
   });
 });

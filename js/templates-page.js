@@ -1,10 +1,10 @@
 /**
- * ResumeForge — Templates Page Script
+ * CVFlow — Templates Page Script
  * Handles search, filter, sort, and rendering of all templates.
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const { templates, buildTemplateCard, debounce, getParam } = window.ResumeForge;
+  const { templates, buildTemplateCard, debounce, getParam } = window.CVFlow;
 
   // ── AOS ────────────────────────────────────────────────────
   if (typeof AOS !== 'undefined') {

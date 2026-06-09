@@ -1,5 +1,5 @@
 /**
- * ResumeForge — Theme Manager
+ * CVFlow — Theme Manager
  * Handles dark/light mode toggle with LocalStorage persistence.
  * Also handles navbar scroll behavior and hamburger menu.
  */
@@ -115,7 +115,7 @@
   init();
 
   // Expose to global
-  window.ResumeForge = window.ResumeForge || {};
-  window.ResumeForge.theme = { toggle: toggleTheme, apply: applyTheme, get: getPreferred };
+  window.CVFlow = window.CVFlow || {};
+  window.CVFlow.theme = { toggle: toggleTheme, apply: applyTheme, get: getPreferred };
 
 })();

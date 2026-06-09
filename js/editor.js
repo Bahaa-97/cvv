@@ -1,11 +1,11 @@
 /**
- * ResumeForge — Editor Script
+ * CVFlow — Editor Script
  * Handles real-time form updates, dynamic lists (experience, education),
  * design controls, and PDF generation.
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const { templates, debounce, showToast, getParam } = window.ResumeForge;
+  const { templates, debounce, showToast, getParam } = window.CVFlow;
 
   // ── Elements: Navigation & Tabs ─────────────────────────────
   const templateNameEl = document.getElementById('editorTemplateName');
@@ -578,8 +578,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Translate any freshly created data-i18n attributes
-    const lang = window.ResumeForge.lang ? window.ResumeForge.lang.get() : 'en';
-    const dict = window.ResumeForge.translations ? window.ResumeForge.translations[lang] : null;
+    const lang = window.CVFlow.lang ? window.CVFlow.lang.get() : 'en';
+    const dict = window.CVFlow.translations ? window.CVFlow.translations[lang] : null;
     if (dict) {
       container.querySelectorAll('[data-i18n]').forEach(tag => {
         const key = tag.getAttribute('data-i18n');

@@ -1,6 +1,6 @@
-# ResumeForge CV Builder
+# CVFlow CV Builder
 
-ResumeForge is a static web app for creating and customizing resumes using ready-made templates, live preview, and PDF export.
+CVFlow is a static web app for creating and customizing resumes using ready-made templates, live preview, and PDF export.
 
 ## Features
 

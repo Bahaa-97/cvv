@@ -1,10 +1,10 @@
 /**
- * ResumeForge — Homepage Script
+ * CVFlow — Homepage Script
  * Initializes AOS animations, stat counters, and featured templates grid.
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const { templates, initCountAnimations, buildTemplateCard, initSmoothScroll } = window.ResumeForge;
+  const { templates, initCountAnimations, buildTemplateCard, initSmoothScroll } = window.CVFlow;
 
   // ── AOS ────────────────────────────────────────────────────
   if (typeof AOS !== 'undefined') {

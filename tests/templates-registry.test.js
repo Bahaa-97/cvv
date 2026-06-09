@@ -35,7 +35,7 @@ describe('templates registry', () => {
   ];
 
   beforeEach(async () => {
-    window.ResumeForge = {};
+    window.CVFlow = {};
     global.fetch = async (url) => ({
       ok: true,
       status: 200,
@@ -44,21 +44,21 @@ describe('templates registry', () => {
       url,
     });
     loadScript('js/templates-registry.js');
-    await window.ResumeForge.templates.load();
+    await window.CVFlow.templates.load();
   });
 
   it('loads templates and exposes a non-empty list', () => {
-    const templates = window.ResumeForge.templates.getAll();
+    const templates = window.CVFlow.templates.getAll();
     expect(Array.isArray(templates)).toBe(true);
     expect(templates.length).toBeGreaterThan(0);
   });
 
   it('filters by category and query', () => {
-    const modern = window.ResumeForge.templates.filter({ category: 'modern' });
+    const modern = window.CVFlow.templates.filter({ category: 'modern' });
     expect(modern.length).toBeGreaterThan(0);
     expect(modern.every((t) => t.category === 'modern')).toBe(true);
 
-    const searched = window.ResumeForge.templates.filter({ q: 'arabic' });
+    const searched = window.CVFlow.templates.filter({ q: 'arabic' });
     expect(searched.some((t) => t.id === 'arabic-elegant')).toBe(true);
   });
 
@@ -74,9 +74,9 @@ describe('templates registry', () => {
       };
     };
 
-    window.ResumeForge = {};
+    window.CVFlow = {};
     loadScript('js/templates-registry.js');
-    await window.ResumeForge.templates.load();
+    await window.CVFlow.templates.load();
     expect(requestedUrl).toBe('data/templates.json');
   });
 
@@ -88,8 +88,8 @@ describe('templates registry', () => {
       json: async () => [{ id: 'broken' }],
     });
 
-    window.ResumeForge = {};
+    window.CVFlow = {};
     loadScript('js/templates-registry.js');
-    await expect(window.ResumeForge.templates.load()).rejects.toThrow('missing "name"');
+    await expect(window.CVFlow.templates.load()).rejects.toThrow('missing "name"');
   });
 });

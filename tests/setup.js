@@ -6,7 +6,7 @@ beforeEach(() => {
   document.documentElement.dir = 'ltr';
   document.documentElement.removeAttribute('data-theme');
   document.body.innerHTML = '';
-  window.ResumeForge = {};
+  window.CVFlow = {};
 });
 
 if (!window.matchMedia) {

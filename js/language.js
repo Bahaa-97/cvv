@@ -1,5 +1,5 @@
 /**
- * ResumeForge — Language Manager
+ * CVFlow — Language Manager
  * Handles bilingual (EN/AR) support, RTL direction, and UI translation.
  */
 
@@ -35,7 +35,7 @@
 
     // Translate statically tagged elements
     const elements = document.querySelectorAll('[data-i18n]');
-    const dict = window.ResumeForge.translations[lang] || window.ResumeForge.translations['en'];
+    const dict = window.CVFlow.translations[lang] || window.CVFlow.translations['en'];
     
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -74,7 +74,7 @@
 
   init();
 
-  window.ResumeForge = window.ResumeForge || {};
-  window.ResumeForge.lang = { get: getLanguage, set: setLanguage, toggle: toggleLanguage };
+  window.CVFlow = window.CVFlow || {};
+  window.CVFlow.lang = { get: getLanguage, set: setLanguage, toggle: toggleLanguage };
 
 })();
