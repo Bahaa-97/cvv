@@ -62,6 +62,19 @@ const translations = {
     "cat_arabic": "Arabic / عربي",
     "cat_exec": "Executive",
 
+    // FAQ
+    "faq_badge": "FAQ",
+    "faq_title": "Frequently Asked Questions",
+    "faq_subtitle": "Everything you need to know about ResumeForge.",
+    "faq_1_q": "Is ResumeForge really 100% free?",
+    "faq_1_a": "Yes! We believe everyone deserves a professional resume. There are no paywalls, no premium templates, and no watermarks on your PDF.",
+    "faq_2_q": "Are my personal details safe?",
+    "faq_2_a": "Absolutely. Your data never leaves your browser. We don't have servers, we don't save your CV, and we don't track your personal info. It's completely private.",
+    "faq_3_q": "How do I use the site?",
+    "faq_3_a": "Just pick a template you like from the Templates page, click 'Edit', fill in your details on the left, see the live preview on the right, and hit 'Download PDF' when you're done!",
+    "faq_4_q": "Do the templates pass ATS (Applicant Tracking Systems)?",
+    "faq_4_a": "Yes. We offer a dedicated 'ATS Friendly' category. All our modern and ATS templates are designed to be easily readable by recruitment software.",
+
     // CTA
     "cta_title": "Ready to Build Your Dream Resume?",
     "cta_desc": "Join thousands of professionals who landed jobs with ResumeForge. It's 100% free — always.",
@@ -224,6 +237,19 @@ const translations = {
     "cat_ats": "متوافق مع ATS",
     "cat_arabic": "عربي / Arabic",
     "cat_exec": "تنفيذي",
+
+    // FAQ
+    "faq_badge": "الأسئلة الشائعة",
+    "faq_title": "الأسئلة المتكررة",
+    "faq_subtitle": "كل ما تحتاج معرفته حول ResumeForge.",
+    "faq_1_q": "هل موقع ResumeForge مجاني 100% حقاً؟",
+    "faq_1_a": "نعم! نؤمن بأن الجميع يستحق سيرة ذاتية احترافية. لا توجد رسوم خفية، ولا قوالب مدفوعة، ولا توجد علامة مائية على ملف الـ PDF الخاص بك.",
+    "faq_2_q": "هل بياناتي الشخصية آمنة؟",
+    "faq_2_a": "بالتأكيد. بياناتك لا تخرج أبداً من متصفحك. نحن لا نمتلك خوادم لحفظ السير الذاتية، ولا نتتبع معلوماتك الشخصية. الخصوصية مضمونة 100%.",
+    "faq_3_q": "كيف أستخدم الموقع؟",
+    "faq_3_a": "بكل بساطة: اختر القالب الذي يعجبك، اضغط 'عدّل الآن'، املأ بياناتك، شاهد المعاينة المباشرة، واضغط 'تحميل PDF' عندما تنتهي!",
+    "faq_4_q": "هل القوالب متوافقة مع أنظمة تتبع المتقدمين (ATS)؟",
+    "faq_4_a": "نعم. لدينا تصنيف مخصص للقوالب 'المتوافقة مع ATS'. جميع قوالبنا العصرية مبنية لتُقرأ بسهولة بواسطة برمجيات التوظيف.",
 
     // CTA
     "cta_title": "هل أنت مستعد لإنشاء سيرة ذاتية رائعة؟",
