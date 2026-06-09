@@ -295,6 +295,33 @@ function initSmoothScroll() {
   });
 }
 
+/**
+ * Initialize Scroll to Top button
+ */
+function initScrollToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-to-top';
+  btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+  btn.setAttribute('aria-label', 'Scroll to top');
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', debounce(() => {
+    if (window.scrollY > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  }, 50));
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollToTop();
+});
+
 // Export to global scope
 window.ResumeForge = window.ResumeForge || {};
 Object.assign(window.ResumeForge, {

@@ -62,6 +62,26 @@ const translations = {
     "cat_arabic": "Arabic / عربي",
     "cat_exec": "Executive",
 
+    // About Page
+    "about_badge": "About Us",
+    "about_title": "About ResumeForge",
+    "about_subtitle": "ResumeForge is a free and simple resume builder focused on speed, clarity, and professional results.",
+    "about_mission_t": "Our mission",
+    "about_mission_d": "We believe everyone should be able to create a high-quality resume without paying, signing up, or dealing with complex tools.",
+    "about_what_t": "What you can do",
+    "about_what_d": "Choose a template, edit your content in real time, customize design options, and export a PDF ready for job applications.",
+    "about_status_t": "Current status",
+    "about_status_d": "The project is actively improving with better testing, documentation, and template data consistency.",
+
+    // Contact Page
+    "contact_badge": "Contact",
+    "contact_title": "Get in Touch",
+    "contact_subtitle": "Share feedback, bug reports, or template ideas. We use your input to improve ResumeForge.",
+    "contact_support_t": "Support",
+    "contact_support_d": "For help with editor issues or PDF export, send details and steps to reproduce the problem.",
+    "contact_partner_t": "Partnerships",
+    "contact_partner_d": "Interested in collaborating, adding industry templates, or integrating ResumeForge in your workflow?",
+
     // FAQ
     "faq_badge": "FAQ",
     "faq_title": "Frequently Asked Questions",
@@ -237,6 +257,26 @@ const translations = {
     "cat_ats": "متوافق مع ATS",
     "cat_arabic": "عربي / Arabic",
     "cat_exec": "تنفيذي",
+
+    // About Page
+    "about_badge": "من نحن",
+    "about_title": "عن ResumeForge",
+    "about_subtitle": "موقع ResumeForge هو أداة مجانية وبسيطة لإنشاء السير الذاتية تركز على السرعة، الوضوح، والنتائج الاحترافية.",
+    "about_mission_t": "مهمتنا",
+    "about_mission_d": "نؤمن بأن كل شخص يجب أن يكون قادراً على إنشاء سيرة ذاتية عالية الجودة دون الدفع، أو التسجيل، أو التعامل مع أدوات معقدة.",
+    "about_what_t": "ما الذي يمكنك فعله",
+    "about_what_d": "اختر قالباً، عدّل محتواك في الوقت الفعلي، خصص خيارات التصميم، وقم بتصدير ملف PDF جاهز للتقديم على الوظائف.",
+    "about_status_t": "الحالة الحالية",
+    "about_status_d": "يتم تحسين المشروع بنشاط من خلال توفير ميزات أفضل، وتوثيق، وتحديثات مستمرة لبيانات القوالب.",
+
+    // Contact Page
+    "contact_badge": "تواصل معنا",
+    "contact_title": "ابقى على تواصل",
+    "contact_subtitle": "شاركنا ملاحظاتك، تقارير الأخطاء، أو أفكار القوالب. نستخدم مشاركتك لتحسين الموقع.",
+    "contact_support_t": "الدعم الفني",
+    "contact_support_d": "للحصول على مساعدة بشأن مشاكل المحرر أو تصدير الـ PDF، أرسل التفاصيل وخطوات إعادة إنتاج المشكلة.",
+    "contact_partner_t": "الشراكات",
+    "contact_partner_d": "هل أنت مهتم بالتعاون، أو إضافة قوالب لمجال معين، أو دمج الموقع في نظام عملك؟",
 
     // FAQ
     "faq_badge": "الأسئلة الشائعة",
