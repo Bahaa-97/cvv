@@ -81,6 +81,7 @@ const translations = {
     "contact_support_d": "For help with editor issues or PDF export, send details and steps to reproduce the problem.",
     "contact_partner_t": "Partnerships",
     "contact_partner_d": "Interested in collaborating, adding industry templates, or integrating ResumeForge in your workflow?",
+    "contact_email": "Email:",
 
     // FAQ
     "faq_badge": "FAQ",
@@ -277,6 +278,7 @@ const translations = {
     "contact_support_d": "للحصول على مساعدة بشأن مشاكل المحرر أو تصدير الـ PDF، أرسل التفاصيل وخطوات إعادة إنتاج المشكلة.",
     "contact_partner_t": "الشراكات",
     "contact_partner_d": "هل أنت مهتم بالتعاون، أو إضافة قوالب لمجال معين، أو دمج الموقع في نظام عملك؟",
+    "contact_email": "البريد الإلكتروني:",
 
     // FAQ
     "faq_badge": "الأسئلة الشائعة",
