@@ -190,7 +190,7 @@
 /* Hero Preview Cards */
 .hero-preview-cards {
   position: absolute;
-  right: -20px;
+  inset-inline-end: -20px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -595,4 +595,21 @@
   .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-stats { gap: var(--space-4); }
   .cta-card { padding: var(--space-10) var(--space-6); }
+}
+
+/* RTL Support */
+[dir="rtl"] .step-connector::after {
+  right: auto;
+  left: -6px;
+  border-left-color: transparent;
+  border-right-color: var(--brand-purple);
+}
+
+@media (max-width: 900px) {
+  [dir="rtl"] .step-connector::after {
+    left: auto;
+    right: -5px;
+    border-right-color: transparent;
+    border-top-color: var(--brand-purple);
+  }
 }
