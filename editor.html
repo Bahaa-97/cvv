@@ -282,6 +282,9 @@
 
     <!-- RIGHT PANEL: Live Preview -->
     <div class="editor-preview-area" id="previewArea">
+      <button class="btn-icon mobile-close-preview" id="mobileClosePreview" aria-label="Close preview">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="preview-wrapper" id="previewWrapper">
         <iframe
           id="resumePreview"
@@ -293,6 +296,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Preview FAB -->
+  <button class="mobile-preview-fab" id="mobilePreviewFab" aria-label="Preview Resume">
+    <i class="fa-solid fa-eye"></i> <span data-i18n="ed_preview">Preview</span>
+  </button>
 
   <!-- PDF Generating Overlay -->
   <div class="pdf-overlay" id="pdfOverlay" hidden role="status" aria-live="polite">

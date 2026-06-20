@@ -597,6 +597,14 @@
   display: block;
 }
 
+/* Mobile Preview Controls (Hidden on Desktop) */
+.mobile-preview-fab {
+  display: none;
+}
+.mobile-close-preview {
+  display: none;
+}
+
 /* =====================
    PDF OVERLAY
    ===================== */
@@ -647,26 +655,93 @@
    RESPONSIVE
    ===================== */
 @media (max-width: 900px) {
+  .editor-body {
+    height: 100vh;
+  }
+  
   .editor-layout {
     flex-direction: column;
-    overflow: auto;
+    overflow: hidden;
   }
 
   .editor-panel {
     width: 100%;
-    height: auto;
-    max-height: 55vh;
-    overflow: auto;
+    flex: 1;
+    max-height: none;
     border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
   }
 
+  /* Preview area becomes a full-screen overlay */
   .editor-preview-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: var(--z-modal);
+    background: var(--bg-surface);
     padding: var(--space-4);
+    padding-top: calc(var(--navbar-height) + var(--space-4));
+    transform: translateY(100%);
+    transition: transform var(--transition-spring);
+    visibility: hidden;
   }
 
-  .editor-body {
-    height: auto;
+  body.preview-active .editor-preview-area {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  /* FAB and Close buttons */
+  .mobile-preview-fab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    background: var(--brand-primary);
+    color: white;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-fixed);
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+  }
+  
+  [dir="rtl"] .mobile-preview-fab {
+    right: auto;
+    left: var(--space-6);
+  }
+
+  body.preview-active .mobile-preview-fab {
+    transform: translateY(150px);
+  }
+
+  .mobile-close-preview {
+    display: flex;
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 40px;
+    height: 40px;
+    background: var(--bg-elevated);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xl);
+    color: var(--text-primary);
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+  }
+  
+  [dir="rtl"] .mobile-close-preview {
+    right: auto;
+    left: var(--space-4);
   }
 }
 

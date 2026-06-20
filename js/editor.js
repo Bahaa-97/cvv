@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const btnDownloadPdf = document.getElementById('downloadPdfBtn');
   const btnReset = document.getElementById('resetBtn');
   const pdfOverlay = document.getElementById('pdfOverlay');
+  const mobilePreviewFab = document.getElementById('mobilePreviewFab');
+  const mobileClosePreview = document.getElementById('mobileClosePreview');
 
   // ── State ──────────────────────────────────────────────────
   let currentTemplate = null;
@@ -432,6 +434,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // PDF Download
     btnDownloadPdf.addEventListener('click', generatePDF);
+
+    // Mobile Preview Overlay Toggle
+    if (mobilePreviewFab && mobileClosePreview) {
+      mobilePreviewFab.addEventListener('click', () => {
+        document.body.classList.add('preview-active');
+      });
+      mobileClosePreview.addEventListener('click', () => {
+        document.body.classList.remove('preview-active');
+      });
+    }
   }
 
   // ── Collapsible Sections ───────────────────────────────────
