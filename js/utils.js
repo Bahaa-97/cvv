@@ -318,8 +318,33 @@ function initScrollToTop() {
   });
 }
 
+/**
+ * Initialize Mobile Menu (Hamburger)
+ */
+function initMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.contains('open');
+      if (isOpen) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      } else {
+        hamburger.classList.add('open');
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+      }
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollToTop();
+  initMobileMenu();
 });
 
 // Export to global scope
