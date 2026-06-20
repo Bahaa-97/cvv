@@ -836,7 +836,8 @@ textarea.form-control {
 /* Responsive Navbar */
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .nav-actions .btn { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-actions .btn:not(#langToggle) { display: none; }
+  .nav-actions { margin-inline-start: auto; margin-inline-end: var(--space-3); gap: 0; }
+  .nav-hamburger { display: flex; margin-inline-start: 0; }
   .mobile-menu.open { display: flex; }
 }
